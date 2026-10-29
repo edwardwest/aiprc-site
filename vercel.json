@@ -1,4 +1,25 @@
 {
   "cleanUrls": true,
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/home/", "destination": "/", "permanent": true },
+    { "source": "/about-full-initial-content/", "destination": "/about/", "permanent": true },
+    { "source": "/team_member/:slug*", "destination": "/about/", "permanent": true },
+    { "source": "/casestudies/:slug*", "destination": "/", "permanent": true },
+    { "source": "/reseachandpress/:slug*", "destination": "/news/", "permanent": true },
+    { "source": "/displaylocation/:slug*", "destination": "/news/", "permanent": true },
+    { "source": "/category/:slug*", "destination": "/news/", "permanent": true },
+    { "source": "/author/:slug*", "destination": "/", "permanent": true },
+    { "source": "/2025/:slug*", "destination": "/news/", "permanent": true },
+    { "source": "/wp-content/uploads/2026/10/AIPRC-Literature-Review-Digital-Edition-October-2026.pdf", "destination": "/assets/docs/AIPRC-Literature-Review-Digital-Edition-October-2026.pdf", "permanent": true },
+    { "source": "/wp-admin/:path*", "destination": "/", "permanent": false },
+    { "source": "/wp-login.php", "destination": "/", "permanent": false },
+    { "source": "/sitemap_index.xml", "destination": "/sitemap.xml", "permanent": true },
+    { "source": "/page-sitemap.xml", "destination": "/sitemap.xml", "permanent": true }
+  ],
+  "headers": [
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }] },
+    { "source": "/learn-more/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] },
+    { "source": "/conference/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }
+  ]
 }

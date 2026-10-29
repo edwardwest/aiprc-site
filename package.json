@@ -1,0 +1,12 @@
+{
+  "name": "aiprc-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AIPRC website (plain HTML/CSS). See README.md.",
+  "scripts": {
+    "site": "node scripts/build.js"
+  },
+  "devDependencies": {
+    "modern-normalize": "^3.0.1"
+  }
+}
