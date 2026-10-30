@@ -46,7 +46,13 @@ body {
   color: var(--navy);
   background: var(--white);
   overflow-x: hidden;
+  /* Footer always sits at the bottom of the window on short pages */
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
+body > main { flex: 1 0 auto; }
 @media (max-width: 767px) { body { line-height: 1.5; } }
 img, svg { display: block; max-width: 100%; height: auto; }
 a { color: var(--ultramarine); }
@@ -674,9 +680,9 @@ h6 { font-size: 18px; line-height: 1.25; }
   height: 100%; display: flex; flex-direction: column;
   background: var(--secondary); border: 1px solid transparent; border-radius: 20px; overflow: hidden;
   color: var(--navy); text-decoration: none;
-  transition: background-color .3s, border-color .3s, transform .3s, box-shadow .3s;
+  transition: background-color .3s, border-color .3s, transform .3s;
 }
-.card:hover, .card:focus-visible { color: var(--navy); background: var(--white); border-color: var(--primary); transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0, 26, 51, .08); }
+.card:hover, .card:focus-visible { color: var(--navy); background: var(--white); border-color: var(--primary); transform: translateY(-4px); }
 .card:focus-visible { outline: 2px solid var(--ultramarine); outline-offset: 3px; }
 .card__image { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--primary); }
 .card__body { flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 24px; }
