@@ -1,0 +1,9 @@
+AUDIT.md
+CLAUDE.md
+README.md
+scripts
+partials
+data
+node_modules
+package.json
+package-lock.json
