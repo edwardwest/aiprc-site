@@ -885,35 +885,19 @@ h6 { font-size: 18px; line-height: 1.25; }
 }
 @media (max-width: 767px) { .mobile-hotlines .hotline--text { display: none; } }
 
-/* Contact: "Connect with us" panel (whole row opens the Airtable form popup).
-   The panel hangs 16px into the left margin so its icon lines up with the contact icons below. */
-.connect-panel {
-  display: flex; align-items: center; gap: 8px; width: calc(100% + 17px);
-  margin: 10px 0 14px -17px; padding: 14px 16px;
-  background: var(--secondary); border: 1px solid var(--primary); border-radius: 16px;
-  color: var(--navy); text-decoration: none;
-  transition: background-color .3s, border-color .3s;
-}
-.connect-panel:hover, .connect-panel:focus-visible { color: var(--navy); background: var(--primary); border-color: var(--primary); }
-.connect-panel:focus-visible { outline: 2px solid var(--ultramarine); outline-offset: 3px; }
-.connect-panel__icon { flex: 0 0 39px; display: flex; justify-content: center; color: var(--ultramarine); }
-/* One icon: form + arrow. The arrow carries a stroke in the panel colour so it "cuts out" the form behind it. */
-.connect-panel__icon svg { width: 37px; height: 37px; max-width: none; flex: none; overflow: visible; }
-.form-send__knock { stroke: var(--secondary); transition: stroke .3s; }
+/* Contact: "Connect with us" item. Same layout as the other contact items; its form-and-arrow icon is
+   15% larger (centred in the same column) and the arrow slides right on hover. The arrow's white
+   stroke cuts it out from the form behind it. */
+.contact-item--connect .contact-item__icon svg { width: 37px; height: 37px; max-width: none; flex: none; overflow: visible; }
+.contact-item--connect + .contact-item { padding-top: 0; }
 .form-send__arrow { transition: transform .3s ease; }
-.connect-panel:hover .form-send__knock, .connect-panel:focus-visible .form-send__knock { stroke: var(--primary); }
-.connect-panel:hover .form-send__arrow, .connect-panel:focus-visible .form-send__arrow { transform: translateX(3px); }
-@media (prefers-reduced-motion: reduce) { .connect-panel:hover .form-send__arrow { transform: none; } }
-.connect-panel__text { flex: 1; display: flex; flex-direction: column; }
-.connect-panel__title { font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
-.connect-panel__body { margin-top: 4px; line-height: 1.5; }
-@media (min-width: 768px) and (max-width: 1024px) { .connect-panel__icon { flex-basis: 49px; } }
-@media (max-width: 767px) {
-  .connect-panel { width: calc(100% + 13px); margin: 0 0 14px -13px; padding: 14px 12px; }
-  .connect-panel__icon { flex-basis: 32px; }
-  .connect-panel__icon svg { margin-inline: -2.5px; }
-  .connect-panel__title { font-size: 1.25rem; }
+.contact-item--connect:hover .form-send__arrow,
+.contact-item--connect:focus-within .form-send__arrow { transform: translateX(3px); }
+@media (prefers-reduced-motion: reduce) {
+  .contact-item--connect:hover .form-send__arrow,
+  .contact-item--connect:focus-within .form-send__arrow { transform: none; }
 }
+@media (max-width: 767px) { .contact-item--connect .contact-item__icon svg { margin-inline: -2.5px; } }
 
 /* Popup holding an embedded form (Airtable) */
 .popup--form .popup__card { width: 760px; display: flex; flex-direction: column; padding: 48px 24px 16px; text-align: left; }
