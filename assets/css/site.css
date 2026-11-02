@@ -911,6 +911,7 @@ h6 { font-size: 18px; line-height: 1.25; }
 @media (max-width: 767px) {
   .connect-panel { width: calc(100% + 13px); margin: 0 0 14px -13px; padding: 14px 12px; }
   .connect-panel__icon { flex-basis: 32px; }
+  .connect-panel__icon svg { margin-inline: -2.5px; }
   .connect-panel__title { font-size: 1.25rem; }
 }
 
