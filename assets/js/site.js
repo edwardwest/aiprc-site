@@ -107,6 +107,10 @@
 
   /* Popups: <a data-popup-open="id"> opens <div class="popup" id="id">. */
   function openPopup(popup) {
+    // Embedded forms (iframe[data-src]) only load the first time their popup opens.
+    popup.querySelectorAll('iframe[data-src]').forEach(function (frame) {
+      if (!frame.getAttribute('src')) frame.setAttribute('src', frame.getAttribute('data-src'));
+    });
     popup.hidden = false;
     document.body.style.overflow = 'hidden';
     var first = popup.querySelector('input, button, a');

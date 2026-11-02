@@ -45,6 +45,7 @@ assets/img/icons/*.svg ────────────┘                  
 | Vercel project (deploys `main`; preview per branch) | Vercel account linked to the repo | Vercel dashboard |
 | Google Analytics, tag `GT-TBVGT3GG` | the account owner's Google login | analytics.google.com |
 | Qualtrics survey (the "Contribute your experience" links) | UNC | external, link only |
+| Airtable "Connect with us" form (popup on `/contact/`) | client's Airtable base `appdoSaGxQKAp8czS` | Airtable; the site only embeds it |
 
 No secrets are stored in this repo.
 
@@ -77,4 +78,5 @@ No secrets are stored in this repo.
 - **Team members are hardcoded** in `about/index.html`, because they rarely change.
 - **News cards link out** (PDF or source site) in a new tab; there are no article pages on this site.
 - **Tap-to-call phone links kept,** a deliberate difference from the original.
+- **"Connect with us" form opens in a popup (2 Nov 2026),** not a new tab: visitors stay on the page. It uses Airtable's `/embed/` URL because the plain form URL can't be framed; it loads on click and falls back to a new tab without JavaScript.
 - **The original's hidden quirks were kept:** for example, the "How to Submit" background squares never appeared on the old site, so they aren't on this one either.

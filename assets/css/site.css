@@ -884,3 +884,37 @@ h6 { font-size: 18px; line-height: 1.25; }
   .site-footer__copy { flex-basis: 181px; }
 }
 @media (max-width: 767px) { .mobile-hotlines .hotline--text { display: none; } }
+
+/* Contact: "Connect with us" panel (whole row opens the Airtable form popup) */
+.connect-panel {
+  display: flex; align-items: center; gap: 12px; width: 100%;
+  margin: 10px 0 14px; padding: 14px 16px;
+  background: var(--secondary); border: 1px solid var(--primary); border-radius: 16px;
+  color: var(--navy); text-decoration: none;
+  transition: background-color .3s, border-color .3s;
+}
+.connect-panel:hover, .connect-panel:focus-visible { color: var(--navy); background: var(--primary); border-color: var(--primary); }
+.connect-panel:focus-visible { outline: 2px solid var(--ultramarine); outline-offset: 3px; }
+.connect-panel__icon { flex: 0 0 32px; color: var(--ultramarine); }
+.connect-panel__icon svg { width: 32px; height: 32px; }
+.connect-panel__text { flex: 1; display: flex; flex-direction: column; }
+.connect-panel__title { font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
+.connect-panel__body { margin-top: 4px; line-height: 1.5; }
+.connect-panel__arrow { flex: none; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--navy); color: var(--white); transition: transform .3s; }
+.connect-panel__arrow svg { width: 18px; height: 18px; }
+.connect-panel:hover .connect-panel__arrow { transform: translateX(3px); }
+@media (max-width: 767px) {
+  .connect-panel { margin: 0 0 14px; }
+  .connect-panel__title { font-size: 1.25rem; }
+}
+
+/* Popup holding an embedded form (Airtable) */
+.popup--form .popup__card { width: 760px; display: flex; flex-direction: column; padding: 48px 24px 16px; text-align: left; }
+.popup__title { font-size: 1.75rem; line-height: 1.2; margin: 0 40px 16px 0; }
+.popup__frame { width: 100%; height: min(75vh, 760px); border: 0; border-radius: 12px; background: var(--white); }
+.popup__fallback { margin: 12px 0 0; font-size: 14px; text-align: center; }
+@media (max-width: 767px) {
+  .popup--form .popup__card { padding: 48px 8px 12px; }
+  .popup--form .popup__frame { flex: 1; height: auto; min-height: 0; }
+  .popup__title { font-size: 1.5rem; }
+}
