@@ -898,7 +898,7 @@ h6 { font-size: 18px; line-height: 1.25; }
 .connect-panel:focus-visible { outline: 2px solid var(--ultramarine); outline-offset: 3px; }
 .connect-panel__icon { flex: 0 0 39px; display: flex; justify-content: center; color: var(--ultramarine); }
 /* One icon: form + arrow. The arrow carries a stroke in the panel colour so it "cuts out" the form behind it. */
-.connect-panel__icon svg { width: 37px; height: 37px; flex: none; overflow: visible; }
+.connect-panel__icon svg { width: 37px; height: 37px; max-width: none; flex: none; overflow: visible; }
 .form-send__knock { stroke: var(--secondary); transition: stroke .3s; }
 .form-send__arrow { transition: transform .3s ease; }
 .connect-panel:hover .form-send__knock, .connect-panel:focus-visible .form-send__knock { stroke: var(--primary); }
