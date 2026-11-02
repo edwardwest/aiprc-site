@@ -633,6 +633,7 @@ h6 { font-size: 18px; line-height: 1.25; }
 /* Desktop: crisis column starts level with the intro text under "Contact Us" */
 @media (min-width: 1025px) { .contact__crisis { align-self: flex-start; margin-top: 86px; } }
 .contact__crisis .prose p { margin: 0; }
+.contact__crisis .prose p + p { margin-top: 1.65em; margin-top: 1lh; } /* one blank line before "Need immediate support?" */
 .contact-item--address p { margin-bottom: 1.5em; }
 .crisis-lines { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 10px; }
 .crisis-lines p { margin: 0; }
