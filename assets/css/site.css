@@ -616,7 +616,7 @@ h6 { font-size: 18px; line-height: 1.25; }
    CONTACT
    ========================================================================= */
 .contact { max-width: var(--content); margin: 96px auto 64px; display: flex; justify-content: space-between; align-items: center; }
-.contact__details { flex: 0 0 399px; align-self: flex-start; padding-bottom: 48px; display: flex; flex-direction: column; align-items: flex-start; }
+.contact__details { flex: 0 0 460px; align-self: flex-start; padding-bottom: 48px; display: flex; flex-direction: column; align-items: flex-start; }
 .contact__details h1 { line-height: 1.4; padding-bottom: 16px; }
 .contact__intro { margin-bottom: 1.5em; }
 .contact-item { display: flex; gap: 8px; width: 100%; padding: 10px 10px 24px 0; }
@@ -629,7 +629,7 @@ h6 { font-size: 18px; line-height: 1.25; }
 .contact-item h5 { line-height: 1.2; }
 .contact-item p { margin: 0; }
 .contact__divider { flex: 0 0 23px; align-self: center; min-height: 352px; border-left: 1px solid var(--divider); }
-.contact__crisis { flex: 0 0 484px; padding-top: 8px; display: flex; flex-direction: column; gap: 20px; }
+.contact__crisis { flex: 0 0 420px; padding-top: 8px; display: flex; flex-direction: column; gap: 20px; }
 .contact__crisis .prose p { margin: 0; }
 .contact-item--address p { margin-bottom: 1.5em; }
 .crisis-lines { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 10px; }
@@ -885,26 +885,35 @@ h6 { font-size: 18px; line-height: 1.25; }
 }
 @media (max-width: 767px) { .mobile-hotlines .hotline--text { display: none; } }
 
-/* Contact: "Connect with us" panel (whole row opens the Airtable form popup) */
+/* Contact: "Connect with us" panel (whole row opens the Airtable form popup).
+   The panel hangs 16px into the left margin so its icon lines up with the contact icons below. */
 .connect-panel {
-  display: flex; align-items: center; gap: 12px; width: 100%;
-  margin: 10px 0 14px; padding: 14px 16px;
+  display: flex; align-items: center; gap: 8px; width: calc(100% + 17px);
+  margin: 10px 0 14px -17px; padding: 14px 16px;
   background: var(--secondary); border: 1px solid var(--primary); border-radius: 16px;
   color: var(--navy); text-decoration: none;
   transition: background-color .3s, border-color .3s;
 }
 .connect-panel:hover, .connect-panel:focus-visible { color: var(--navy); background: var(--primary); border-color: var(--primary); }
 .connect-panel:focus-visible { outline: 2px solid var(--ultramarine); outline-offset: 3px; }
-.connect-panel__icon { flex: 0 0 32px; color: var(--ultramarine); }
-.connect-panel__icon svg { width: 32px; height: 32px; }
+.connect-panel__icon { position: relative; flex: 0 0 39px; display: flex; justify-content: center; color: var(--ultramarine); }
+.connect-panel__icon > svg { width: 32px; height: 32px; transition: transform .3s; }
+.connect-panel__badge {
+  position: absolute; right: -5px; bottom: -7px; width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; background: var(--navy); color: var(--white); border: 2px solid var(--secondary);
+  transition: transform .3s, border-color .3s;
+}
+.connect-panel__badge svg { width: 12px; height: 12px; }
+.connect-panel:hover .connect-panel__icon > svg { transform: translateY(-2px); }
+.connect-panel:hover .connect-panel__badge { transform: translateX(3px); border-color: var(--primary); }
 .connect-panel__text { flex: 1; display: flex; flex-direction: column; }
 .connect-panel__title { font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
 .connect-panel__body { margin-top: 4px; line-height: 1.5; }
-.connect-panel__arrow { flex: none; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--navy); color: var(--white); transition: transform .3s; }
-.connect-panel__arrow svg { width: 18px; height: 18px; }
-.connect-panel:hover .connect-panel__arrow { transform: translateX(3px); }
+@media (min-width: 768px) and (max-width: 1024px) { .connect-panel__icon { flex-basis: 49px; } }
 @media (max-width: 767px) {
-  .connect-panel { margin: 0 0 14px; }
+  .connect-panel { width: calc(100% + 13px); margin: 0 0 14px -13px; padding: 14px 12px; }
+  .connect-panel__icon { flex-basis: 32px; }
   .connect-panel__title { font-size: 1.25rem; }
 }
 
