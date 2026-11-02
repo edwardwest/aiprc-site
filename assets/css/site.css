@@ -896,17 +896,14 @@ h6 { font-size: 18px; line-height: 1.25; }
 }
 .connect-panel:hover, .connect-panel:focus-visible { color: var(--navy); background: var(--primary); border-color: var(--primary); }
 .connect-panel:focus-visible { outline: 2px solid var(--ultramarine); outline-offset: 3px; }
-.connect-panel__icon { position: relative; flex: 0 0 39px; display: flex; justify-content: center; color: var(--ultramarine); }
-.connect-panel__icon > svg { width: 32px; height: 32px; transition: transform .3s; }
-.connect-panel__badge {
-  position: absolute; right: -5px; bottom: -7px; width: 22px; height: 22px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 50%; background: var(--navy); color: var(--white); border: 2px solid var(--secondary);
-  transition: transform .3s, border-color .3s;
-}
-.connect-panel__badge svg { width: 12px; height: 12px; }
-.connect-panel:hover .connect-panel__icon > svg { transform: translateY(-2px); }
-.connect-panel:hover .connect-panel__badge { transform: translateX(3px); border-color: var(--primary); }
+.connect-panel__icon { flex: 0 0 39px; display: flex; justify-content: center; color: var(--ultramarine); }
+/* One icon: form + arrow. The arrow carries a stroke in the panel colour so it "cuts out" the form behind it. */
+.connect-panel__icon svg { width: 37px; height: 37px; flex: none; overflow: visible; }
+.form-send__knock { stroke: var(--secondary); transition: stroke .3s; }
+.form-send__arrow { transition: transform .3s ease; }
+.connect-panel:hover .form-send__knock, .connect-panel:focus-visible .form-send__knock { stroke: var(--primary); }
+.connect-panel:hover .form-send__arrow, .connect-panel:focus-visible .form-send__arrow { transform: translateX(3px); }
+@media (prefers-reduced-motion: reduce) { .connect-panel:hover .form-send__arrow { transform: none; } }
 .connect-panel__text { flex: 1; display: flex; flex-direction: column; }
 .connect-panel__title { font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
 .connect-panel__body { margin-top: 4px; line-height: 1.5; }
