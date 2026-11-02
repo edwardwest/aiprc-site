@@ -13,6 +13,7 @@
  * It also regenerates sitemap.xml and copies the CSS reset from node_modules.
  */
 const fs = require('fs');
+const crypto = require('crypto');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -102,6 +103,20 @@ function replaceRegion(html, open, close, content) {
   return html.replace(re, (_, a, b) => `${a}${content}${b}`);
 }
 
+// Cache-busting: CSS/JS links get ?v=<content hash> so browsers fetch new versions straight away.
+const VERSIONED = ['assets/css/modern-normalize.css', 'assets/css/site.css', 'assets/js/site.js', 'assets/js/analytics.js'];
+function versionAssets(html) {
+  for (const file of VERSIONED) {
+    const full = path.join(ROOT, file);
+    if (!fs.existsSync(full)) continue;
+    const hash = crypto.createHash('md5').update(fs.readFileSync(full)).digest('hex').slice(0, 8);
+    const escaped = ('/' + file).replace(/[.]/g, '\\.');
+    const re = new RegExp('"' + escaped + '(\\?v=[a-f0-9]+)?"', 'g');
+    html = html.replace(re, '"/' + file + '?v=' + hash + '"');
+  }
+  return html;
+}
+
 function build() {
   const header = read('partials/header.html');
   const footer = read('partials/footer.html');
@@ -119,6 +134,7 @@ function build() {
     // Inline icons (idempotent: the data-icon attribute is kept on the output).
     html = html.replace(/<svg data-icon="([\w-]+)"([^>]*)>[\s\S]*?<\/svg>/g, (_, name, attrs) =>
       icon(name, attrs.replace(/\s(aria-hidden|focusable|viewBox|xmlns|fill)="[^"]*"/g, '')));
+    html = versionAssets(html);
     write(page.file, html);
   }
 
