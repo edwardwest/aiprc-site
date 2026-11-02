@@ -106,11 +106,43 @@
   });
 
   /* Popups: <a data-popup-open="id"> opens <div class="popup" id="id">. */
-  function openPopup(popup) {
-    // Embedded forms (iframe[data-src]) only load the first time their popup opens.
+  // Embedded forms (iframe[data-src]) start loading the first time someone shows intent
+  // (hover, keyboard focus or touch on the link) or opens the popup, whichever comes first.
+  function loadFrames(popup) {
     popup.querySelectorAll('iframe[data-src]').forEach(function (frame) {
-      if (!frame.getAttribute('src')) frame.setAttribute('src', frame.getAttribute('data-src'));
+      if (frame.getAttribute('src')) return;
+      frame.addEventListener('load', function () { popup.classList.add('is-loaded'); }, { once: true });
+      frame.setAttribute('src', frame.getAttribute('data-src'));
     });
+  }
+  document.querySelectorAll('[data-popup-open]').forEach(function (link) {
+    var warm = function () {
+      var popup = document.getElementById(link.getAttribute('data-popup-open'));
+      if (popup) loadFrames(popup);
+    };
+    ['pointerenter', 'focus', 'touchstart'].forEach(function (evt) {
+      link.addEventListener(evt, warm, { once: true, passive: true });
+    });
+  });
+  // Background preload for iframes marked data-preload="idle": desktop only, skipped on data-saver
+  // or slow connections, and only once the page has fully loaded and the browser is idle.
+  (function () {
+    var frames = document.querySelectorAll('.popup iframe[data-preload="idle"]');
+    if (!frames.length) return;
+    var conn = navigator.connection || {};
+    var slow = conn.saveData || /(^|-)(2g|3g)$/.test(conn.effectiveType || '');
+    var touchOnly = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    if (slow || touchOnly) return;
+    var start = function () {
+      var idle = window.requestIdleCallback || function (cb) { return setTimeout(cb, 1500); };
+      idle(function () { frames.forEach(function (f) { loadFrames(f.closest('.popup')); }); }, { timeout: 3000 });
+    };
+    if (document.readyState === 'complete') start();
+    else window.addEventListener('load', start, { once: true });
+  })();
+
+  function openPopup(popup) {
+    loadFrames(popup);
     popup.hidden = false;
     document.body.style.overflow = 'hidden';
     var first = popup.querySelector('input, button, a');

@@ -17,11 +17,15 @@
   <link rel="apple-touch-icon" href="/assets/img/AIPHR-Favicon.svg">
   <link rel="preload" href="/assets/fonts/roboto-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Warm up the connection to Airtable so the "Connect with us" form opens faster -->
+  <link rel="preconnect" href="https://airtable.com">
+  <link rel="preconnect" href="https://static.airtable.com" crossorigin>
+  <link rel="dns-prefetch" href="https://static.airtable.com">
   <link rel="stylesheet" href="/assets/css/modern-normalize.css?v=ff8475d3">
-  <link rel="stylesheet" href="/assets/css/site.css?v=6ad1d63a">
+  <link rel="stylesheet" href="/assets/css/site.css?v=ca9ffaba">
   <script>document.documentElement.classList.add('js');</script>
   <script src="/assets/js/analytics.js?v=b8a90a6e" defer></script>
-  <script src="/assets/js/site.js?v=603a83c5" defer></script>
+  <script src="/assets/js/site.js?v=8af2a9ce" defer></script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
     {"@type":"WebPage","@id":"https://aiprc.org/contact/","url":"https://aiprc.org/contact/","name":"Contact - AI Psychological Research Coalition","isPartOf":{"@id":"https://aiprc.org/#website"},"inLanguage":"en-US","breadcrumb":{"@id":"https://aiprc.org/contact/#breadcrumb"}},
@@ -120,7 +124,12 @@
     <button class="popup__close" type="button" data-popup-close aria-label="Close"><svg data-icon="close" aria-hidden="true" focusable="false" fill="currentColor" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path d="M742 167L500 408 258 167C246 154 233 150 217 150 196 150 179 158 167 167 154 179 150 196 150 212 150 229 154 242 171 254L408 500 167 742C138 771 138 800 167 829 196 858 225 858 254 829L496 587 738 829C750 842 767 846 783 846 800 846 817 842 829 829 842 817 846 804 846 783 846 767 842 750 829 737L588 500 833 258C863 229 863 200 833 171 804 137 775 137 742 167Z"/></svg></button>
     <h2 class="visually-hidden" id="connect-form-title">Connect with us</h2>
     <!-- Airtable form: the iframe only loads when the popup opens (data-src). To change form, swap both URLs below and the panel link above. -->
-    <iframe class="popup__frame" title="Connect with us form" data-src="https://airtable.com/embed/appdoSaGxQKAp8czS/pagvwJvIK0DPpj9HX/form" loading="lazy"></iframe>
+    <div class="popup__frame-wrap">
+      <div class="popup__loading" aria-hidden="true"><span class="popup__spinner"></span>Loading form…</div>
+      <!-- data-preload="idle": on desktop with a decent connection, the form loads in the background once the page
+           has finished loading (~7 MB from Airtable), so it opens almost instantly. Remove the attribute to load it on click only. -->
+      <iframe class="popup__frame" title="Connect with us form" data-src="https://airtable.com/embed/appdoSaGxQKAp8czS/pagvwJvIK0DPpj9HX/form" data-preload="idle"></iframe>
+    </div>
     <p class="popup__fallback"><a href="https://airtable.com/appdoSaGxQKAp8czS/pagvwJvIK0DPpj9HX/form" target="_blank" rel="noopener">Open the form in a new tab</a></p>
   </div>
 </div>

@@ -58,6 +58,7 @@ No secrets are stored in this repo.
 
 ## Cost and limits
 
+- **Contact form preload:** on desktop, `/contact/` quietly loads the Airtable form (~7 MB, 600+ files from Airtable) after the page finishes, so it opens in ~0.4 s instead of ~3 s. Skipped on phones, data-saver and slow connections; remove `data-preload="idle"` in `contact/index.html` to switch it off.
 - **Hosting:** Vercel, free plan for a static site of this size. The site is about 3 MB in total (mostly the 1 MB Literature Review PDF and the conference photo).
 
 ## Known gaps
