@@ -4,7 +4,7 @@ Project overview, status and decisions: see `README.md`. Don't duplicate them he
 
 ## Golden rules
 - Pages are plain HTML. Never hand-edit content between `<!-- @header -->`, `<!-- @footer -->` or `<!-- @cards … -->` markers; edit `partials/*.html` or `data/*.json` instead.
-- After any change, run `node scripts/build.js` (needs `npm install` once). Commit the regenerated files together with the source change.
+- After any change, run `node scripts/build.js` (needs `npm install` once). Commit the regenerated files together with the source change. The build also stamps CSS/JS links with `?v=<hash>` so browsers pick up new styles immediately; skipping it leaves visitors on stale CSS.
 - Keep the look identical to the original Elementor site: reuse existing classes in `assets/css/site.css`; don't introduce new colours, fonts or spacing scales. Brand colours are the CSS variables at the top of `site.css`.
 - Verify visually at 1440px, 1024px and 390px before saying a change is done.
 
