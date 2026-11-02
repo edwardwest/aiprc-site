@@ -629,7 +629,9 @@ h6 { font-size: 18px; line-height: 1.25; }
 .contact-item h5 { line-height: 1.2; }
 .contact-item p { margin: 0; }
 .contact__divider { flex: 0 0 23px; align-self: center; min-height: 352px; border-left: 1px solid var(--divider); }
-.contact__crisis { flex: 0 0 420px; padding-top: 8px; display: flex; flex-direction: column; gap: 20px; }
+.contact__crisis { flex: 0 0 484px; padding-top: 8px; display: flex; flex-direction: column; gap: 20px; }
+/* Desktop: crisis column starts level with the intro text under "Contact Us" */
+@media (min-width: 1025px) { .contact__crisis { align-self: flex-start; margin-top: 86px; } }
 .contact__crisis .prose p { margin: 0; }
 .contact-item--address p { margin-bottom: 1.5em; }
 .crisis-lines { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 10px; }
