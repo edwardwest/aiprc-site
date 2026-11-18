@@ -29,6 +29,7 @@ const PAGES = [
   { file: 'news/index.html', url: '/news/', public: true },
   { file: 'contact/index.html', url: '/contact/', public: true },
   { file: 'privacy-policy/index.html', url: '/privacy-policy/', public: true },
+  { file: 'datablitz/index.html', url: '/datablitz/', public: true },
   { file: 'conference/index.html', url: '/conference/', public: false },
   { file: 'learn-more/resources/index.html', url: '/learn-more/resources/', public: false },
   { file: 'learn-more/taxonomy/index.html', url: '/learn-more/taxonomy/', public: false },

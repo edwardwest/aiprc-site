@@ -931,3 +931,16 @@ h6 { font-size: 18px; line-height: 1.25; }
 .popup--form .popup__card { animation: popup-rise .3s ease-out both; }
 @keyframes popup-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .popup--form .popup__card { animation: none; } }
+
+/* =========================================================================
+   DATA BLITZ (/datablitz/): call for papers. Reuses the News hero and the form popup.
+   ========================================================================= */
+.datablitz-cta { width: 684px; max-width: 100%; margin: 20px auto 0; padding: 0 20px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+.datablitz-cta p { margin: 0; }
+.datablitz-cta .btn-row { justify-content: center; }
+.page-hero--datablitz .news-hero__art { padding-top: 40px; }
+.page-hero--datablitz { margin-bottom: 96px; }
+.popup--form .popup__card > .popup__intro { margin: 0 40px 16px 0; }
+@media (max-width: 767px) { .page-hero--datablitz { margin-bottom: 64px; } }
+@media (min-width: 768px) and (max-width: 1024px) { .page-hero--datablitz { min-height: 0; justify-content: flex-start; } }
+@media (max-width: 767px) { .popup--form .popup__title, .popup--form .popup__card > .popup__intro { margin-left: 12px; } }
