@@ -939,8 +939,13 @@ h6 { font-size: 18px; line-height: 1.25; }
 .datablitz-cta p { margin: 0; }
 .datablitz-cta .btn-row { justify-content: center; }
 .page-hero--datablitz .news-hero__art { padding-top: 40px; }
-.page-hero--datablitz { margin-bottom: 96px; }
+.page-hero--datablitz { margin-bottom: 40px; }
+.page-hero--datablitz .page-hero__titles { width: 820px; }
+.page-hero--datablitz h1 { font-size: 3rem; }
+.datablitz-details { padding-bottom: 96px; }
+.datablitz-details .btn-row { justify-content: center; }
 .popup--form .popup__card > .popup__intro { margin: 0 40px 16px 0; }
-@media (max-width: 767px) { .page-hero--datablitz { margin-bottom: 64px; } }
+@media (max-width: 767px) { .page-hero--datablitz { margin-bottom: 32px; min-height: 0; } .page-hero--datablitz h1 { font-size: 28px; } .datablitz-details { padding: 0 20px 64px; } }
 @media (min-width: 768px) and (max-width: 1024px) { .page-hero--datablitz { min-height: 0; justify-content: flex-start; } }
 @media (max-width: 767px) { .popup--form .popup__title, .popup--form .popup__card > .popup__intro { margin-left: 12px; } }
+@media (min-width: 768px) { #datablitz-form .popup__frame { height: min(66vh, 760px); } }
